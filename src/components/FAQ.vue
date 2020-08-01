@@ -18,7 +18,10 @@
 </template>
 
 <script>
+import RemoteData from "../mixins/RemoteData";
+
 export default {
+  mixins: [RemoteData],
 
   data() {
     return {
@@ -31,14 +34,11 @@ export default {
   async created() {
     this.loading = true;
     try {
-      this.questions = await this.$fetch('questions');
+      this.questions = await this.$fetch("questions");
     } catch (e) {
       this.error = e;
     }
     this.loading = false;
   }
-
-
-
 };
 </script>
