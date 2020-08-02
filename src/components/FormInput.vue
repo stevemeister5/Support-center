@@ -5,8 +5,9 @@
       :class="inputClass"
       :name="name"
       :type="type"
-      :value.prop="value"
+      :value="text"
       :placeholder="placeholder"
+      @input="update"
     />
   </div>
 </template>
@@ -21,7 +22,7 @@ export default {
       type: String,
       default: "text"
     },
-    value: {
+    text: {
       required: true
     },
     placeholder: {
@@ -33,11 +34,22 @@ export default {
     }
   },
 
+  model: {
+    prop: "text",
+    event: "update"
+  },
+
   computed: {
     inputClass() {
       return {
         invalid: this.invalid
       };
+    }
+  },
+
+  methods: {
+    update(event) {
+      this.$emit("update", event.currentTarget.value);
     }
   }
 };
