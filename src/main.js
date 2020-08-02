@@ -1,18 +1,26 @@
-import 'babel-polyfill'
-import Vue from 'vue'
-import router from './router'
-import './global-components'
+import "babel-polyfill";
+import Vue from "vue";
+import router from "./router";
+import "./global-components";
 
-import AppLayout from './components/AppLayout.vue'
+import AppLayout from "./components/AppLayout.vue";
 
-import VueFetch from './plugins/fetch'
+import VueFetch from "./plugins/fetch";
+
+import state from "./state";
+
+import VueState from './plugins/state';
+
 Vue.use(VueFetch, {
-    baseUrl: 'http://localhost:3000/',
-})
+  baseUrl: "http://localhost:3000/"
+});
+
+Vue.use(VueState, state);
 
 new Vue({
-    el: '#app',
-    render: h => h(AppLayout),
-    // Provide the router to the app
-    router,
-})
+  el: "#app",
+  data: state,
+  render: h => h(AppLayout),
+  // Provide the router to the app
+  router
+});
