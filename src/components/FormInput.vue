@@ -9,6 +9,7 @@
       :value="text"
       :placeholder="placeholder"
       @input="update"
+      v-bind="$attrs"
     />
   </div>
 </template>
