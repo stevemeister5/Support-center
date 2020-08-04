@@ -13,12 +13,14 @@
         v-bind:key="ticket.title"
         class="ticket-item"
       >
-        <a @click="id = ticket._id">{{ ticket.title }}</a>
+        <!-- <a @click="id = ticket._id">{{ ticket.title }}</a> -->
         <!-- <span>{{ ticket.title }}</span> -->
+        <router-link :to="{name: 'ticket', params: { id: ticket._id }}">
+          {{ ticket.title }}
+        </router-link>
         <span class="badge">{{ ticket.status }}</span>
         <span class="date">{{ ticket.date | date }}</span>
       </div>
-      <Ticket v-if="id" :id="id" />
     </section>
   </div>
 </template>
@@ -26,22 +28,12 @@
 <script>
 import RemoteData from "../mixins/RemoteData";
 
-import Ticket from "./Ticket.vue";
 
 export default {
   mixins: [
     RemoteData({
       tickets: "tickets"
     })
-  ],
-
-  components: {
-    Ticket
-  },
-  data() {
-    return {
-      id: null
-    };
-  }
+  ]
 };
 </script>
