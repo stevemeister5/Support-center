@@ -10,6 +10,7 @@ import TicketsLayout from "./components/TicketsLayout.vue";
 import Tickets from "./components/Tickets.vue";
 import NewTicket from "./components/NewTicket.vue";
 import Ticket from "./components/Ticket.vue";
+import NotFound from "./components/NotFound.vue";
 
 Vue.use(VueRouter);
 
@@ -32,7 +33,9 @@ const routes = [
         props: route => ({ id: route.params.id })
       }
     ]
-  }
+  },
+  // 404 route
+  { path: "*", component: NotFound }
 ];
 
 const router = new VueRouter({
