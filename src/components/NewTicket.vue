@@ -3,12 +3,17 @@
     <h1>New ticket</h1>
     <SmartForm title="New ticket" :operation="operation" :valid="valid">
       <FormInput
-        type="textarea"
         name="title"
         v-model="title"
         placeholder="Short description (max 100 chars)"
         maxlength="100"
         required
+      />
+      <FormInput
+        type="textarea"
+        name="description"
+        v-model="description"
+        placeholder="Describe your problem in details"
         rows="4"
       />
       <template slot="actions">
@@ -24,7 +29,11 @@
 </template>
 
 <script>
+import PersistentData from "../mixins/PersistentData";
+
 export default {
+  mixins: [PersistentData("NewTicket", ["title", "description"]),],
+
   data() {
     return {
       title: "",
