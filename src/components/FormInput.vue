@@ -1,6 +1,7 @@
 <template>
   <div class="row">
-    <input
+    <component
+      :is="element"
       class="input"
       :class="inputClass"
       :name="name"
@@ -44,6 +45,9 @@ export default {
       return {
         invalid: this.invalid
       };
+    },
+    element() {
+      return this.type === "textarea" ? this.type : "input";
     }
   },
 
