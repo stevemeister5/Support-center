@@ -1,7 +1,7 @@
 {
   "name": "support-center",
   "version": "0.1.0",
-  "description": "A web app that accepts and displays support tickets"
+  "description": "A web app that accepts and displays support tickets",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
